@@ -1,0 +1,55 @@
+= rbat.rb
+
+Authors::   edvakf (http://twitter.com/edvakf/)
+Version::   0.1
+Copyright:: Copyright (C) edvakf, 2011. All rights reserved
+License::   Distributed under the same license as Ruby
+
+== What is?
+
+RBat makes distribution of ruby script to windows easier.
+
+RBat copies Ruby and all dependensies under current directory,
+and creates a batch file that executes a script.
+
+In theory, the directory should be standalone, ie. running
+the batch file should run the ruby script on the Ruby under
+this directory.
+
+RBat is inspired a lot by Exerb.
+
+== Usage
+
+1. Write your ruby script on Windows
+2. Download rbat.rb on the directory of your script
+3. Ruby your script with mswin or mingw Ruby (not cygwin)
+   requiring rbat.rb as follows
+
+> /path/to/ruby -r./rbat ./your-script.rb
+
+4. This will create a directory called 'ruby-dist' and
+   copy ruby executable etc.
+   It also creates your-script.bat in the current directory.
+
+== Limitations
+
+Scripts that require rbconfig might not work properly.
+
+At the moment, rbat copies all *.dll files in the same directory
+as Ruby executable. This is because there is no easy way to tell
+which dll is loaded by Ruby.
+
+= dll.rb
+
+However, I created another library called dll.rb which is still
+not well tested at all, and might not work in other than
+my environment, but can lists all .dll and .so files that are
+loaded by the current Ruby program.
+
+> /path/to/ruby -r./dll ./your-script.rb
+
+The dlls which are in the same folder as Ruby itself are the
+ones that are used. Those that are not listed are the ones
+unused. If there are dlls that are in ruby-dist directory
+and are not listed here, then you can probably remove them.
+
