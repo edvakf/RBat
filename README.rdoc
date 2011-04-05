@@ -20,26 +20,26 @@ RBat is inspired a lot by Exerb.
 
 == Usage
 
-1. Write your ruby script on Windows
-2. Download rbat.rb on the directory of your script
-3. Ruby your script with mswin or mingw Ruby (not cygwin)
-   requiring rbat.rb as follows
+* Write your ruby script on Windows
+* Download rbat.rb on the directory of your script
+* Ruby your script with mswin or mingw Ruby (not cygwin)
+  requiring rbat.rb as follows
 
 > /path/to/ruby -r./rbat ./your-script.rb
 
-4. This will create a directory called 'ruby-dist' and
-   copy ruby executable etc.
-   It also creates your-script.bat in the current directory.
+* This will create a directory called 'ruby-dist' and
+  copy ruby executable etc.
+  It also creates your-script.bat in the current directory.
 
 == Limitations
 
 Scripts that require rbconfig might not work properly.
 
-At the moment, rbat copies all *.dll files in the same directory
-as Ruby executable. This is because there is no easy way to tell
-which dll is loaded by Ruby.
+At the moment, rbat copies ALL *.dll files in the same directory
+as Ruby executable, even unused ones. This is because there is
+no easy way to tell which dll is loaded by Ruby.
 
-= dll.rb
+== dll.rb
 
 However, I created another library called dll.rb which is still
 not well tested at all, and might not work in other than
