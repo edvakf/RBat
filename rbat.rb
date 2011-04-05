@@ -105,7 +105,7 @@ class RBat
     rel_script.gsub!(File::SEPARATOR, File::ALT_SEPARATOR) unless File::ALT_SEPARATOR.nil?
     # should change '/' to '\'?
     open(bat, "w") {|file|
-      file.puts "#{new_ruby} #{rel_script}"
+      file.puts "#{new_ruby} #{rel_script} %*"
     }
   end
 end
